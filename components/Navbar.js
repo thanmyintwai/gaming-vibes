@@ -5,7 +5,7 @@ import AuthContext from '../stores/authContext'
 
 export default function Navbar() {
 
-  const {user, login, logout} = useContext(AuthContext)
+  const {user, login, logout, authReady} = useContext(AuthContext)
   console.log(user)
 
 
@@ -14,6 +14,9 @@ export default function Navbar() {
       <nav>
         <Image src="/rupee.png" width={50} height={48} />
         <h1>Gaming Vibes</h1>
+        { authReady && (
+
+        
         <ul>
           <li><Link href="/"><a>Home</a></Link></li>
           <li><Link href="/guides"><a>Guides</a></Link></li>
@@ -22,6 +25,7 @@ export default function Navbar() {
           { user && <li onClick={logout} className="btn">Log out</li> }
 
         </ul>
+         ) } 
       </nav>
       <div className="banner">
         <Image src="/banner.png" width={966} height={276} />
